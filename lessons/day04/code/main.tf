@@ -10,17 +10,17 @@ terraform {
 
 provider "aws" {
   # Configuration options
-    region = "ca-central-1"
+  region = "ap-southeast-1"
 }
 
 # backend configuration
 terraform {
   backend "s3" {
-    bucket         = "erraform-state-1754513244"
-    key            = "dev/terraform.tfstate"
-    region         = "ca-central-1"
-    use_lockfile  = "true"
-    encrypt        = true
+    bucket       = "terraform-state-1767446337"
+    key          = "dev/terraform.tfstate"
+    region       = "ap-southeast-1"
+    use_lockfile = true
+    encrypt      = true
   }
 }
 

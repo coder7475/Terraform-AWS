@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BUCKET_NAME="terraform-state-$(date +%s)"
-REGION="us-east-1"
+REGION="ap-southeast-1"
 
 # Create S3 bucket for state storage
 aws s3 mb s3://$BUCKET_NAME --region $REGION
