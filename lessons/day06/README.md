@@ -1,6 +1,7 @@
 # Day 6: File Structure
 
 ## Topics Covered
+
 - Terraform file organization
 - Sequence of file loading
 - Best practices for file structure
@@ -9,13 +10,15 @@
 ## Key Learning Points
 
 ### Terraform File Loading
+
 - Terraform loads all `.tf` files in the current directory
 - Files are loaded in **lexicographical order** (alphabetical)
 - File names don't affect functionality, only organization
 - All `.tf` files are merged into a single configuration
 
 ### Recommended File Structure
-```
+
+```sh
 project-root/
 ├── backend.tf           # Backend configuration
 ├── provider.tf          # Provider configurations
@@ -33,6 +36,7 @@ project-root/
 ```
 
 ### File Organization Principles
+
 1. **Separation of Concerns**: Group related resources together
 2. **Logical Grouping**: Organize by service or function
 3. **Consistent Naming**: Use clear, descriptive file names
@@ -42,9 +46,11 @@ project-root/
 ## Tasks for Practice
 
 ### Task: Reorganize Previous Files
+
 Using the files from Day 5, divide the configuration into separate files:
 
 #### backend.tf
+
 ```hcl
 terraform {
   required_version = ">= 1.0"
@@ -71,6 +77,7 @@ terraform {
 ```
 
 #### provider.tf
+
 ```hcl
 provider "aws" {
   region = var.region
@@ -82,6 +89,7 @@ provider "aws" {
 ```
 
 #### variables.tf
+
 ```hcl
 variable "environment" {
   description = "Environment name (dev, staging, production)"
@@ -130,6 +138,7 @@ variable "tags" {
 ```
 
 #### locals.tf
+
 ```hcl
 locals {
   # Common tags applied to all resources
@@ -162,6 +171,7 @@ resource "random_id" "bucket_suffix" {
 ```
 
 #### vpc.tf
+
 ```hcl
 # VPC
 resource "aws_vpc" "main" {
@@ -222,6 +232,7 @@ resource "aws_route_table_association" "public" {
 ```
 
 #### storage.tf
+
 ```hcl
 # S3 Bucket
 resource "aws_s3_bucket" "main" {
@@ -267,6 +278,7 @@ resource "aws_s3_bucket_public_access_block" "main" {
 ```
 
 #### outputs.tf
+
 ```hcl
 # VPC Outputs
 output "vpc_id" {
@@ -329,6 +341,7 @@ output "common_tags" {
 ```
 
 #### terraform.tfvars
+
 ```hcl
 # Project Configuration
 project_name = "aws-terraform-course"
@@ -351,7 +364,8 @@ tags = {
 ### Advanced File Organization Patterns
 
 #### Environment-Specific Structure
-```
+
+```sh
 environments/
 ├── dev/
 │   ├── backend.tf
@@ -378,7 +392,8 @@ shared/
 ```
 
 #### Service-Based Structure
-```
+
+```sh
 infrastructure/
 ├── networking/
 │   ├── vpc.tf
@@ -430,6 +445,7 @@ infrastructure/
    - Document variable purposes
 
 ### Commands for Testing
+
 ```bash
 # Validate the reorganized structure
 terraform validate
@@ -453,4 +469,5 @@ terraform apply
 5. **Overly complex structure** - Simple is often better
 
 ## Next Steps
+
 Proceed to Day 7 to learn about Terraform type constraints and how to properly define and validate variable types.

@@ -15,6 +15,7 @@ variable "environment" {
 ```
 
 ### 2. **Local Variables** (`locals.tf`)
+
 Internal computed values - like local variables in programming
 ```hcl
 locals {
@@ -28,6 +29,7 @@ locals {
 ```
 
 ### 3. **Output Variables** (`output.tf`)
+
 Values returned after deployment - like function return values
 ```hcl
 output "bucket_name" {
@@ -153,7 +155,8 @@ terraform output -json              # Show all outputs in JSON format
 ```
 
 **Example output:**
-```
+
+```sh
 bucket_arn = "arn:aws:s3:::demo-terraform-demo-bucket-abc123"
 bucket_name = "demo-terraform-demo-bucket-abc123"
 environment = "demo"
@@ -167,6 +170,7 @@ tags = {
 ## 🏗️ What This Creates
 
 Just one simple S3 bucket that demonstrates all three variable types:
+
 - Uses **input variables** for environment and bucket name
 - Uses **local variables** for computed bucket name and tags
 - Uses **output variables** to show the created bucket details
@@ -174,6 +178,7 @@ Just one simple S3 bucket that demonstrates all three variable types:
 ## 🚀 Variable Precedence Testing
 
 ### 1. **Default Values** (temporarily hide terraform.tfvars)
+
 ```bash
 mv terraform.tfvars terraform.tfvars.backup
 terraform plan
@@ -182,18 +187,21 @@ mv terraform.tfvars.backup terraform.tfvars  # restore
 ```
 
 ### 2. **Using terraform.tfvars** (automatically loaded)
+
 ```bash
 terraform plan
 # Uses: environment = "demo" (from terraform.tfvars)
 ```
 
 ### 3. **Command Line Override** (highest precedence)
+
 ```bash
 terraform plan -var="environment=production"
 # Overrides tfvars: environment = "production"
 ```
 
 ### 4. **Environment Variables**
+
 ```bash
 export TF_VAR_environment="staging-from-env"
 terraform plan
@@ -201,15 +209,15 @@ terraform plan
 ```
 
 ### 5. **Using Different tfvars Files**
+
 ```bash
 terraform plan -var-file="dev.tfvars"        # environment = "development"
 terraform plan -var-file="production.tfvars"  # environment = "production"
 ```
-```
 
 ## 📁 Simple File Structure
 
-```
+```sh
 ├── main.tf           # S3 bucket resource
 ├── variables.tf      # Input variables (2 simple variables)
 ├── locals.tf         # Local variables (tags and computed name)
