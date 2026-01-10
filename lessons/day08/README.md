@@ -25,7 +25,7 @@ day08/
 ├── output.tf        # Output values demonstrating for loops
 ├── task.md          # Hands-on exercises and tasks
 └── README.md        # This file
-
+```
 
 ## 🎯 Key Concepts
 

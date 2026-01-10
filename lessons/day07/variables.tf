@@ -8,7 +8,7 @@ variable "environment" {
 variable "region" {
     type = string
     description = "the aws region"
-    default = "us-east-1"
+    default = "ap-southeast-1"
 }
 
 variable "instance_type" {

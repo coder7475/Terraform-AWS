@@ -2,7 +2,13 @@
 variable "environment" {
   description = "Environment name"
   type        = string
-  default     = "staging"
+  default     = "dev"
+}
+
+variable "region" {
+  description = "The AWS region"
+  type = string
+  default = "ap-southeast-1"
 }
 
 variable "bucket_name" {

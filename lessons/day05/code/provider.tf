@@ -14,5 +14,5 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-southeast-1" # Simple hardcoded region for demo
+  region = var.region
 }
