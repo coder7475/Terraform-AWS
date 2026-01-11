@@ -23,6 +23,20 @@ variable "bucket_name" {
 }
 
 variable "instance_count" {
+  description = "The number of ec2 instances"
   type = number
   default = 2
 }
+
+variable "monitoring_enabled" {
+  description = "whether detailed monitoring is enabled"
+  type = bool
+  default = false
+}
+
+variable "associate_public_ip" {
+    type = bool
+    description = "associate public ip to ec2 instance"
+    default = true
+}
+
