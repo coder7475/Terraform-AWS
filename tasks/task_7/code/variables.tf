@@ -69,10 +69,17 @@ variable "instance_type" {
 }
 
 variable "tags" {
+  description = "tags for VPC"
   type = map(string)
   default = {
     Environment = "dev", 
     Name = "dev-Instance", 
     created_by = "terraform"
   }
+}
+
+variable "ingress_values" {
+  description = "Tuple: [from_port, protocol, to_port]."
+  type        = tuple([number, string, number])
+  default     = [443, "tcp", 443]
 }

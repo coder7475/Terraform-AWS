@@ -20,3 +20,4 @@ resource "aws_subnet" "subnet_2" {
     Name = "my_vpc_subnet_2"
   }
 }
+
