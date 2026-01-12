@@ -9,6 +9,16 @@ variable "region" {
   description = "The AWS region"
   type        = string
   default     = "ap-southeast-1"
+  validation {
+    condition = contains(var.allowed_region, var.region)
+    error_message = "Region '${var.region}' is not allowed. Allowed regions: ${join(", ", tolist(var.allowed_region))}."
+  }
+}
+
+variable "allowed_region" {
+  description = "set of allowed region"
+  type = set(string)
+  default = [ "ap-southeast-1", "ap-northeast-1" ]
 }
 
 variable "availability_zone" {
