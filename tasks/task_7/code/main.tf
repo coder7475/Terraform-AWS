@@ -31,6 +31,5 @@ resource "aws_instance" "my_instance" {
 
   tags = {
     Name = "my_instance",
-    Count = count.index
   }
 }

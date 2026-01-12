@@ -1,6 +1,7 @@
 # Day 4: State File Management - Remote Backend
 
 ## Topics Covered
+
 - How Terraform updates Infrastructure
 - Terraform state file
 - State file best practices
@@ -11,19 +12,23 @@
 ## Key Learning Points
 
 ### How Terraform Updates Infrastructure
+
 - **Goal**: Keep actual state same as desired state
 - **State File**: Actual state resides in terraform.tfstate file
 - **Process**: Terraform compares current state with desired configuration
 - **Updates**: Only changes the resources that need modification
 
 ### Terraform State File
+
 The state file is a JSON file that contains:
+
 - Resource metadata and current configuration
 - Resource dependencies
 - Provider information
 - Resource attribute values
 
 ### State File Best Practices
+
 1. **Never edit state file manually**
 2. **Store state file remotely** (not in local file system)
 3. **Enable state locking** to prevent concurrent modifications
@@ -33,6 +38,7 @@ The state file is a JSON file that contains:
 7. **Encrypt state files** at rest and in transit
 
 ### Remote Backend Benefits
+
 - **Collaboration**: Team members can share state
 - **Locking**: Prevents concurrent state modifications
 - **Security**: Encrypted storage and access control
@@ -63,13 +69,12 @@ S3 native state locking uses the **If-None-Match** HTTP header to implement atom
 
 
 **Previous Method (DynamoDB):**
+
 - Required separate DynamoDB table creation
 - Additional AWS service to monitor and maintain
 - More complex IAM permissions
 - Extra cost for DynamoDB read/write operations
 - DynamoDB state locking is now **discouraged** and may be deprecated in future Terraform versions
-
-
 
 ## Tasks for Practice
 
@@ -141,6 +146,7 @@ terraform state list
 ```
 
 ### State Commands
+
 ```bash
 # List resources in state
 terraform state list
@@ -174,7 +180,6 @@ terraform state pull
 - **Region Mismatch**: Backend region should match your provider region
 - **Bucket Names**: S3 bucket names must be globally unique
 - **Terraform Version**: Requires Terraform 1.10+ for S3 native locking; 1.11+ recommended for stable GA release
-
 
 ## Next Steps
 
