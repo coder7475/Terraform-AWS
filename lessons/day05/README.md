@@ -5,7 +5,9 @@ A simple demo showing the three types of Terraform variables using a basic S3 bu
 ## 🎯 Three Types of Variables
 
 ### 1. **Input Variables** (`variables.tf`)
+
 Values you provide to Terraform - like function parameters
+
 ```hcl
 variable "environment" {
   description = "Environment name"
@@ -17,6 +19,7 @@ variable "environment" {
 ### 2. **Local Variables** (`locals.tf`)
 
 Internal computed values - like local variables in programming
+
 ```hcl
 locals {
   common_tags = {
@@ -31,6 +34,7 @@ locals {
 ### 3. **Output Variables** (`output.tf`)
 
 Values returned after deployment - like function return values
+
 ```hcl
 output "bucket_name" {
   description = "Name of the S3 bucket"
@@ -41,9 +45,11 @@ output "bucket_name" {
 ## 📥 Understanding Input Variables in Detail
 
 ### What are Input Variables?
+
 Input variables are like **function parameters** - they allow you to customize your Terraform configuration without hardcoding values.
 
 ### Basic Input Variable Structure
+
 ```hcl
 variable "variable_name" {
   description = "What this variable is for"
@@ -53,6 +59,7 @@ variable "variable_name" {
 ```
 
 ### How to Use Input Variables
+
 ```hcl
 # Define in variables.tf
 variable "environment" {
@@ -80,6 +87,7 @@ resource "aws_s3_bucket" "demo" {
 ### Providing Values to Input Variables
 
 **1. Default values** (in variables.tf)
+
 ```hcl
 variable "environment" {
   default = "staging"
@@ -87,17 +95,20 @@ variable "environment" {
 ```
 
 **2. terraform.tfvars file** (auto-loaded)
+
 ```hcl
 environment = "demo"
 bucket_name = "terraform-demo-bucket"
 ```
 
 **3. Command line**
+
 ```bash
 terraform plan -var="environment=production"
 ```
 
 **4. Environment variables**
+
 ```bash
 export TF_VAR_environment="development"
 terraform plan
@@ -106,9 +117,11 @@ terraform plan
 ## 📤 Understanding Output Variables in Detail
 
 ### What are Output Variables?
+
 Output variables are like **function return values** - they display important information after Terraform creates your infrastructure.
 
 ### Basic Output Variable Structure
+
 ```hcl
 output "output_name" {
   description = "What this output shows"
@@ -117,8 +130,8 @@ output "output_name" {
 ```
 
 ### How to Use Output Variables
-
 **Define in output.tf**
+
 ```hcl
 # Output a resource attribute
 output "bucket_name" {
