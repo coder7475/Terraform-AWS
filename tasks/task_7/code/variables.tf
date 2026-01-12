@@ -40,3 +40,8 @@ variable "associate_public_ip" {
   default     = true
 }
 
+variable "cidr_block" {
+  type = list(string)
+  description = "cidr blocks for vpc"
+  default = [ "10.0.0.0/16", "10.0.0.0/8" ]
+}

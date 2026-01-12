@@ -18,3 +18,8 @@ output "tags" {
   description = "Tags from local variable"
   value       = local.common_tags
 }
+
+output "vpc_arn" {
+  description = "arn of vpc main"
+  value = aws_vpc.main.arn
+}
