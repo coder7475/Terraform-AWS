@@ -45,3 +45,15 @@ variable "cidr_block" {
   description = "cidr blocks for vpc"
   default = [ "10.0.0.0/16", "10.0.0.0/8" ]
 }
+
+variable "allowed_vm_types" {
+  description = "Approved EC2 instance types per org policy."
+  type        = list(string)
+  default     = ["t2.micro", "t2.small", "t3.micro", "t3.small"]
+}
+
+variable "instance_type" {
+  description = "EC2 instance type to deploy."
+  type        = string
+  default     = "t2.micro"
+}
