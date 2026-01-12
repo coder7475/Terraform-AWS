@@ -67,3 +67,12 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
+
+variable "tags" {
+  type = map(string)
+  default = {
+    Environment = "dev", 
+    Name = "dev-Instance", 
+    created_by = "terraform"
+  }
+}

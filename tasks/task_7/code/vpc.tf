@@ -1,9 +1,6 @@
 resource "aws_vpc" "main" {
   cidr_block = var.cidr_block[0]
-  tags = {
-    Name = "my_vpc",
-    learning = "list variable"
-  }
+  tags = var.tags
 }
 
 resource "aws_subnet" "subnet_1" {
