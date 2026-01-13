@@ -83,3 +83,17 @@ variable "ingress_values" {
   type        = tuple([number, string, number])
   default     = [443, "tcp", 443]
 }
+
+variable "config" {
+  description = "Configuration Object for AWS deployment Setting"
+  type = object({
+    region = string
+    monitoring = bool
+    instance_count = number
+  })
+  default = {
+    region = "ap-southeast-1"
+    monitoring = true
+    instance_count = 1
+  }
+}

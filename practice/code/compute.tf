@@ -1,12 +1,13 @@
 
 resource "aws_instance" "my_instance" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_count
+  instance_type = var.instance_type
 
-  # count = var.instance_count
+  count = var.config.instance_count
   availability_zone           = var.availability_zone
-  monitoring                  = var.monitoring_enabled
+  monitoring                  = var.config.monitoring
   associate_public_ip_address = var.associate_public_ip
+
 
   # precondition
   lifecycle {
