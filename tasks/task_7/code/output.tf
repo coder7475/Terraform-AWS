@@ -23,3 +23,8 @@ output "vpc_arn" {
   description = "arn of vpc main"
   value = aws_vpc.main.arn
 }
+
+output "deployment_summary" {
+  value       = "Environment: ${var.environment} | Instance Count: ${var.instance_count} | Name Tag: ${var.tags["Name"]}"
+  description = "Summary of the deployment configuration"
+}

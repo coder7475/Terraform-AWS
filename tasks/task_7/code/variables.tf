@@ -65,7 +65,7 @@ variable "allowed_vm_types" {
 variable "instance_type" {
   description = "EC2 instance type to deploy."
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "tags" {
