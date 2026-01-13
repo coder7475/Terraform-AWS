@@ -1,0 +1,8 @@
+#set($originalParam = $input.params('name'))
+#set($prefix = "non_proxy_")
+#if(!$originalParam.startsWith($prefix))
+  #set ($originalParam = $prefix + $originalParam)
+#end 
+{
+"name": "$originalParam"
+}
