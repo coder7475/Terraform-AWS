@@ -52,11 +52,13 @@ resource "aws_s3_bucket" "example" {
 ```
 
 **Use cases:**
+
 - Creating N identical resources
 - Simple iteration over a list
 - When numeric index is sufficient
 
 **Limitations:**
+
 - Removing items from the middle of a list causes resource recreation
 - Less stable resource addressing
 - Harder to maintain
@@ -71,12 +73,14 @@ resource "aws_s3_bucket" "example" {
 ```
 
 **Use cases:**
+
 - Creating resources from a map or set
 - Stable resource addressing by key
 - Production environments
 - Complex resource configurations
 
 **Benefits:**
+
 - Adding/removing items doesn't affect other resources
 - More readable resource references
 - Better for production use
@@ -92,6 +96,7 @@ resource "aws_s3_bucket" "dependent" {
 ```
 
 **Use cases:**
+
 - Explicit resource ordering
 - Hidden dependencies not captured by references
 - Ensuring resources are created in specific order
@@ -111,6 +116,7 @@ resource "aws_s3_bucket" "example" {
 ```
 
 **Use cases:**
+
 - Protect critical resources from deletion
 - Zero-downtime updates
 - Ignore external changes to specific attributes
@@ -125,6 +131,7 @@ resource "aws_s3_bucket" "example" {
 ```
 
 **Use cases:**
+
 - Multi-region deployments
 - Multi-account setups
 - Cross-region replication
@@ -145,7 +152,8 @@ resource "aws_s3_bucket" "example" {
    ```
 
 2. **Update variables (important!):**
-   - Edit `variables.tf` or create a `terraform.tfvars` file
+
+- Edit `variables.tf` or create a `terraform.tfvars` file
    - Change S3 bucket names to be globally unique
    - Update AWS region if needed
 

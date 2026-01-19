@@ -1,6 +1,7 @@
 # Task for Day 08 - Meta-Arguments (count and for_each)
 
 ## Learning Objectives
+
 - Understand the concepts of `for_each`, `for` loop, and `count` meta-arguments in Terraform
 - Learn when to use `count` vs `for_each`
 - Practice creating multiple AWS resources efficiently
@@ -8,6 +9,7 @@
 ## Tasks
 
 ### Task 1: Understanding COUNT
+
 **Objective**: Create two S3 buckets using a single resource block with `count`
 
 1. Create a variable of type `list(string)` for bucket names
@@ -16,6 +18,7 @@
 4. Run `terraform plan` to see the resources
 
 ### Task 2: Understanding FOR_EACH
+
 **Objective**: Create two S3 buckets using a single resource block with `for_each`
 
 1. Create a variable of type `set(string)` for bucket names
@@ -24,6 +27,7 @@
 4. Compare resource addressing: `[0]` vs `["bucket-name"]`
 
 ### Task 3: Output with FOR Loop
+
 **Objective**: Display bucket information using `for` expressions
 
 1. Create output to print all bucket names using a `for` loop
@@ -33,10 +37,12 @@
 ## Key Concepts
 
 **When to use COUNT:**
+
 - Simple scenarios with identical resources
 - Resources identified by numeric index
 
 **When to use FOR_EACH:**
+
 - Resources need unique identifiers
 - More stable when adding/removing items
 - Better for production environments
