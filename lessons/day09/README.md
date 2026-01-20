@@ -1,6 +1,7 @@
 # Day 9: Terraform Lifecycle Meta-arguments (AWS)
 
 ## 📚 Topics Covered
+
 - `create_before_destroy` - Zero-downtime deployments
 - `prevent_destroy` - Protect critical resources
 - `ignore_changes` - Handle external modifications
@@ -13,6 +14,7 @@
 ## 🎯 Learning Objectives
 
 By the end of this lesson, you will:
+
 1. Understand all Terraform lifecycle meta-arguments
 2. Know when to use each lifecycle rule
 3. Be able to protect production resources
@@ -20,24 +22,27 @@ By the end of this lesson, you will:
 5. Handle resources modified by external systems
 6. Validate resources before and after creation
 
-
 ## 🔧 Lifecycle Meta-arguments Explained
 
 ### 1. create_before_destroy
 
 **What it does:**  
+
 Forces Terraform to create a replacement resource BEFORE destroying the original resource.
 
 **Default Behavior:**  
+
 Normally, Terraform destroys the old resource first, then creates the new one.
 
 **Use Cases:**
+
 - ✅ EC2 instances behind load balancers (zero downtime)
 - ✅ RDS instances with read replicas
 - ✅ Critical infrastructure that cannot have gaps
 - ✅ Resources referenced by other infrastructure
 
 **Example:**
+
 ```hcl
 resource "aws_instance" "web_server" {
   ami           = data.aws_ami.amazon_linux_2.id
@@ -50,12 +55,14 @@ resource "aws_instance" "web_server" {
 ```
 
 **Benefits:**
+
 - ✅ Prevents service interruption
 - ✅ Maintains resource availability during updates
 - ✅ Reduces deployment risks
 - ✅ Enables blue-green deployments
 
 **When NOT to use:**
+
 - ❌ When resource naming must be unique and unchanging
 - ❌ When you can afford downtime
 - ❌ When you want to minimize costs (temporary duplicate resources)
@@ -65,15 +72,18 @@ resource "aws_instance" "web_server" {
 ### 2. prevent_destroy
 
 **What it does:**  
+
 Prevents Terraform from destroying a resource. If destruction is attempted, Terraform will error.
 
 **Use Cases:**
+
 - ✅ Production databases
 - ✅ Critical S3 buckets with important data
 - ✅ Security groups protecting production resources
 - ✅ Stateful resources that should never be deleted
 
 **Example:**
+
 ```hcl
 resource "aws_s3_bucket" "critical_data" {
   bucket = "my-critical-production-data"
