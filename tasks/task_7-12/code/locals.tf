@@ -1,5 +1,6 @@
 # Local Variables - Internal variables for reusability
 locals {
+  all_instace_ids = aws_instance.my_instance[*].id
   # Common tags applied to all resources
   common_tags = {
     Environment = var.environment

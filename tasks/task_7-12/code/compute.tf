@@ -1,9 +1,9 @@
 
 resource "aws_instance" "my_instance" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+  count = var.instance_count
+  instance_type = var.environment == "dev" ? "t3.micro": "t3.small"
 
-  count = var.config.instance_count
   availability_zone           = var.availability_zone
   monitoring                  = var.config.monitoring
   associate_public_ip_address = var.associate_public_ip
@@ -17,7 +17,5 @@ resource "aws_instance" "my_instance" {
     }
   }
 
-  tags = {
-    Name = "my_instance",
-  }
+  tags = var.tags
 }

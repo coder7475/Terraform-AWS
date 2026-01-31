@@ -1,6 +1,7 @@
 # Day 10: Terraform Dynamic Blocks, Conditional Expressions, and Splat Expressions
 
 ## 📚 Topics Covered
+
 - **Conditional Expressions** - Make decisions in your configurations
 - **Dynamic Blocks** - Create flexible, repeatable nested blocks
 - **Splat Expressions** - Extract values from lists efficiently

@@ -53,13 +53,13 @@ variable "associate_public_ip" {
 variable "cidr_block" {
   type = list(string)
   description = "cidr blocks for vpc"
-  default = [ "10.0.0.0/16", "10.0.0.0/8" ]
+  default = ["10.0.0.0/16", "10.0.0.0/8" ]
 }
 
 variable "allowed_vm_types" {
   description = "Approved EC2 instance types per org policy."
   type        = list(string)
-  default     = ["t2.micro", "t2.small", "t3.micro", "t3.small"]
+  default     = ["t3.micro", "t3.small"]
 }
 
 variable "instance_type" {
@@ -96,4 +96,32 @@ variable "config" {
     monitoring = true
     instance_count = 1
   }
+}
+
+
+variable "ingress_rules" {
+  description = "List of ingress rules for security group"
+  type = list(object({
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    cidr_blocks = list(string)
+    description = string
+  }))
+  default = [
+    {
+      from_port   = 80
+      to_port     = 80
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+      description = "HTTP"
+    },
+    {
+      from_port   = 443
+      to_port     = 443
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+      description = "HTTPS"
+    }
+  ]
 }
