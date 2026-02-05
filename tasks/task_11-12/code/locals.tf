@@ -26,4 +26,15 @@ locals {
   min_cost = min(local.positive_cost...)
   total_cost = sum(local.positive_cost)
   avg_cost = local.total_cost / length(local.positive_cost)
+
+  current_timestamp = timestamp()
+  format_1 = formatdate("YYYY-MM-DD HH:mm:ss", local.current_timestamp)
+  format_2 = formatdate("DD/MM/YYYY hh:mm a", local.current_timestamp)
+  format_3 = formatdate("MM-DD-YYYY", local.current_timestamp)
+  format_4 = formatdate("YYYYMMDDTHHmmssZ", local.current_timestamp)
+  timestamp_name = "backup-${local.format_1}"
+
+  config_file_exists = fileexists("./config.json")
+  config_data = local.config_file_exists ? jsondecode(file("./config.json")) : {}
+  
 }

@@ -46,4 +46,26 @@ output "min_cost" {
   value = local.min_cost
 }
 
+output "timestamp" {
+  value = local.current_timestamp
+}
 
+output "formatted_timestamp_1" {
+  value = local.format_1
+}
+
+output "formatted_timestamp_2" {
+  value = local.format_2
+}
+
+output "formatted_timestamp_3" {
+  value = local.format_3
+}
+
+output "formatted_timestamp_4" {
+  value = local.format_4
+}
+
+output "decoded_data" {
+  value = local.config_data
+}
