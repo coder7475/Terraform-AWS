@@ -36,3 +36,53 @@ variable "instance_sizes" {
 variable "environment" {
   default = "dev"
 }
+
+variable "instance_type" {
+  default = "t2.micro"
+
+  validation {
+    condition = length(var.instance_type) >= 2 && length(var.instance_type) <= 20
+    error_message = "Variable must have between 2 & 20 characters!"
+  }
+
+  validation {
+    condition = can(regex("^t[2-3]\\.", var.instance_type)) 
+    error_message = "Instance type must start with t2 or t3"
+  }
+}
+
+variable "backup_name" {
+  default = "daily_backup"
+
+  validation {
+    condition = endswith(var.backup_name, "_backup")
+    error_message = "Backup name must end with '_backup'"
+  }
+}
+
+
+variable "credentials" {
+  default = "xy123"
+  sensitive = true
+}
+
+
+variable "user_locations" {
+  default = [ 
+    "us-east-1", 
+    "us-west-2",
+    "ap-southeast-1",
+    "us-east-1", 
+    ]
+}
+
+variable "default_locations" {
+  default = [
+    "us-west-2",
+    "us-east-1", 
+  ]
+}
+
+variable "monthly_costs" {
+  default = [-50, 100, 75, 200] 
+}
